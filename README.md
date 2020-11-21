@@ -31,24 +31,25 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - _TODO: What does Metricbeat record?_
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Name                 | Function       | IP Address             | Operating System |
+|----------------------|----------------|------------------------|------------------|
+| Jump-Box Provisione- | Gateway        | 10.0.0.4/20.188.215.32 | Linux            |
+| Load Balancer        | Load Balancer  | 52.147.22.144          | Linux            |
+| ELK-Server           | Elk Server     | 10.2.0.4/20.195.24.148 | Linux            |
+| Web-1                | Web Server     | 10.0.0.5               | Linux            |
+| Web-2                | Web Server     | 10.0.0.6               | Linux            |
+| Home-PC              | Access Control | Dynamic IP             | Windows          |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the _ELK Server_ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+* Personal PC with Dynamic Public IPV4 address - most recently configured as 101.115.34.43.
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by the _personal pc_ and/or the _jump-box-provisioner._
+Similarily the ELK server could only be accessed by these two machine. The _jump-box-provisioner_ was able to access the ELK server via SSH on port 22 while the _personal pc_ was able to access it via TCP through port 5601.
 
 A summary of the access policies in place can be found in the table below.
 
