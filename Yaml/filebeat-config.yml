@@ -1,0 +1,12 @@
+# Run the command - curl -L -O https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat > /etc/ansible/files/filebeat-config.yml
+# Once the config file for filebeat is downloaded make the following changes to the file:
+
+#---------------------------------------- Elasticsearch output ------------------------------
+ hosts: ["10.2.0.4:9200"]
+  username: "elastic"
+  password: "changeme"
+
+
+#---------------------------------------- Kibana --------------------------------------------
+setup.kibana:
+  host: "10.2.0.4:5601"
