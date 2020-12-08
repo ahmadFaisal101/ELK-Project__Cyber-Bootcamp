@@ -4,7 +4,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Final-Network-Diagram](Images/Final-Network-Diagram)
+![Final-Network-Diagram](Images/Final_Network_Design.jpg)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the ansible playbook file may be used to install only certain pieces of it, such as Filebeat.
 
