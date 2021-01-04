@@ -79,13 +79,13 @@ The playbook implements the following tasks:
 - Installs a Python Docker module
 - Downloads and launches a Docker ELK container
 - Exposes the container to ports:
-- - 5601
-- - 9200
-- - 5044
+  - 5601
+  - 9200
+  - 5044
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+!['docker ps' Output](Images/docker_ps_output.PNG)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
