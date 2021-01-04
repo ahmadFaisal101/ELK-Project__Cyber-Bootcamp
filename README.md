@@ -30,9 +30,9 @@ This document contains the following details:
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
 Load balancing ensures that the application will be highly redundant and available, in addition to restricting access to the network.
-A laod balancer particularly protects and organisation against distributed denial of service attacks by allowing for any and all attack traffic to be shifted or sent elsewhere, either to backup servers or to a public cloud provider.  
+A load balancer particularly protects an organisation against distributed denial of service attacks by allowing for any and all attack traffic to be shifted or sent elsewhere, either to backup servers or to a public cloud provider.  
 
--_TODO: what is the advantage of a jump box in networking
+A jump box serves to provide a controlled and monitored means of access between the two security zones. In order for any updates or tasks to be completed on the web servers and ELK server, an administrator must first login through the jump box inorder to gain access. This increases security and allows for network engineers to focus on hardening the network around a singular machine. 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the network and system traffic.
 Configured within the ELK server are the filebeats and metribeats tools. Filebeats serves as a lightweight solution for data collection. In particular in collects log files from the various servers it is configured to and sends them to a centeral location known as Elasticsearch where the data can be further processed and enhanced. It eliminates the slow and tiredsome process of having to SSH into each and every server, virtual machine and container to collect all the generated logs. Similarily metricbeats is used to periodically collect system metrics and statistics like CPU usage, memory, file system, disk IO and all other processes running, and sends it to ELasticsearch for easy lookup and analysis.  
@@ -53,28 +53,35 @@ The configuration details of each machine may be found below.
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the _ELK Server_ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-* Personal PC with Dynamic Public IPV4 address - most recently configured as 101.115.34.43.
+* Personal PC with Dynamic Public IPV4 address.
 
 Machines within the network can only be accessed by the _personal pc_ and/or the _jump-box-provisioner._
 Similarily the ELK server could only be accessed by these two machine. The _jump-box-provisioner_ was able to access the ELK server via SSH on port 22 while the _personal pc_ was able to access it via TCP through port 5601.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name                 | Publicly Accessible | Allowed IP Addresses                                |
+|----------------------|---------------------|-----------------------------------------------------|
+| Jump Box Provisioner | No                  | Personal PC Dynamic IPv4 Address                       |
+| Web 1                | No                  | 10.0.0.4 - Jump Box,52.147.22.144 - Load Balancer   |
+| Web 2                | No                  | 10.0.0.4 - Jump Box,52.147.22.144 - Load Balancer   |
+| ELK Server           | No                  | 10.0.0.4 - Jump Box                                 |
+| Load Balancer        | No                  | Personal PC Public IP                               |
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it helps to eliviate the drudgery workload while allowing for the deployment of multiple servers quickly and efficently.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Increases the virtual memory 
+- Installs Docker
+- Installs pip3
+- Installs a Python Docker module
+- Downloads and launches a Docker ELK container
+- Exposes the container to ports:
+- - 5601
+- - 9200
+- - 5044
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
